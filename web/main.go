@@ -3,16 +3,20 @@ package main
 import (
 	"log/slog"
 	"net/http"
+	"time"
 )
 
 func main() {
+	srv := http.Server{
+		Addr:         ":6767",
+		Handler:      http.FileServer(http.Dir("static")),
+		ReadTimeout:  5 * time.Second,
+		WriteTimeout: 10 * time.Second,
+		IdleTimeout:  20 * time.Second,
+	}
 	slog.Info("started running server")
-	http.ListenAndServe(":6767", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		_, err := w.Write([]byte("hello"))
-		if err != nil {
-			slog.Warn("error writing response", "err", err)
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-	}))
+	err := srv.ListenAndServe()
+	if err != nil && err != http.ErrServerClosed {
+		slog.Error("server unexpectedly ended", "err", err)
+	}
 }
