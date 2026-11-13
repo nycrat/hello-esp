@@ -1,0 +1,17 @@
+hardware:
+- a small box with a battery compartment, two lcd screens, on/off switch, led indicators, and a usb-c port.
+- user can press the on/off switch, and an led indicator and the lcd screen will light up.
+- if not connected, the first lcd screen will display the status of the device, in plain text.
+- the second lcd screen will contain a text prompt box; user inputs will be shown in this box.
+- once the device is connected to wifi, the first lcd will contain messages from the web server.
+- the user pressing <enter> on the keyboard will send the message that has been typed out.
+
+web app:
+- basic chat interface that is responsive for mobile as well.
+- no authentication is required to send or receive messages.
+- multiple users can be connected concurrently, identified by a randomly generated username.
+- it is displayed how many users are concurrently connected.
+- messages are synced across clients that are concurrently connected.
+- messages don't have to be stored persistently.
+- there is protection against code injection.
+- the esp32 acts as a normal client, no special treatment for it.
