@@ -1,17 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- <link rel="icon" href="favicon.png" /> TODO: ADD THIS -->
+    <title>Hello ESP</title>
+    <script src="htmx.min.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
-  <!-- <link rel="icon" href="favicon.png" /> TODO: ADD THIS -->
-  <title>Hello ESP</title>
-  <script src="htmx.min.js"></script>
-</head>
-
-<body>
-  <button hx-get="index.html" hx-swap="outerHTML">press me!</button>
-  <h1>This is my app: Hello ESP!</h1>
-</body>
-
+  <body>
+    <button hx-get="index.html" hx-swap="outerHTML">press me!</button>
+    <h1>This is my app: Hello ESP!</h1>
+    <div id="#chat">content here</div>
+    <form hx-post="/api/endpoint/">
+      <input name="content" />
+    </form>
+  </body>
 </html>
